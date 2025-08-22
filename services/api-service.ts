@@ -34,7 +34,7 @@ class APIService {
   constructor() {
     this.baseUrl =
       process.env.NEXT_PUBLIC_API_BASE_URL ||
-      (process.env.NODE_ENV === "production" ? "https://api.army-cop.mil" : "http://localhost:8080/api")
+      (process.env.NODE_ENV === "production" ? "https://api.army-cop.mil" : "/api")
   }
 
   setOperationId(operationId: string) {

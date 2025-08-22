@@ -26,6 +26,20 @@ class RealtimeService {
   private maxReconnectAttempts = 5
   private reconnectDelay = 1000
 
+  private get apiBaseUrl() {
+    return (
+      process.env.NEXT_PUBLIC_API_BASE_URL ||
+      (process.env.NODE_ENV === "production" ? "https://api.army-cop.mil" : "http://localhost:8080/api")
+    )
+  }
+
+  private get wsBaseUrl() {
+    return (
+      process.env.NEXT_PUBLIC_WS_BASE_URL ||
+      (process.env.NODE_ENV === "production" ? "wss://api.army-cop.mil" : "ws://localhost:8086")
+    )
+  }
+
   setOperationId(operationId: string) {
     if (!operationId || operationId === "null" || operationId === "undefined") {
       console.warn("Invalid operation ID provided to realtime service:", operationId)
@@ -60,7 +74,7 @@ class RealtimeService {
   }
 
   private connectSSE() {
-    const sseUrl = `/api/ops/${this.operationId}/stream/positions`
+    const sseUrl = `${this.apiBaseUrl}/ops/${this.operationId}/stream/positions`
 
     try {
       this.eventSource = new EventSource(sseUrl)
@@ -98,7 +112,7 @@ class RealtimeService {
   }
 
   private connectWebSocket() {
-    const wsUrl = `ws://localhost:8080/ws/ops/${this.operationId}`
+    const wsUrl = `${this.wsBaseUrl}/ws/${this.operationId}`
 
     try {
       this.websocket = new WebSocket(wsUrl)

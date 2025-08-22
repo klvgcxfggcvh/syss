@@ -1,0 +1,14 @@
+mil/army/cop/message/entity/Message.class
+mil/army/cop/message/entity/Message$MessageType.class
+mil/army/cop/message/dto/MessageDto.class
+mil/army/cop/message/MessageServiceApplication.class
+mil/army/cop/message/entity/Channel.class
+mil/army/cop/message/service/MessageStreamService.class
+mil/army/cop/message/entity/Message$MessagePriority.class
+mil/army/cop/message/config/WebSocketConfig.class
+mil/army/cop/message/entity/Channel$ChannelType.class
+mil/army/cop/message/repository/MessageRepository.class
+mil/army/cop/message/repository/ChannelRepository.class
+mil/army/cop/message/config/MessageSecurityConfig.class
+mil/army/cop/message/dto/WebSocketMessageDto.class
+mil/army/cop/message/handler/ChatWebSocketHandler.class

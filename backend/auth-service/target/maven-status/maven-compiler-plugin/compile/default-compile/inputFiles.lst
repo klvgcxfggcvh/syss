@@ -1,0 +1,7 @@
+/workspace/backend/auth-service/src/main/java/mil/army/cop/auth/AuthServiceApplication.java
+/workspace/backend/auth-service/src/main/java/mil/army/cop/auth/config/AuthSecurityConfig.java
+/workspace/backend/auth-service/src/main/java/mil/army/cop/auth/controller/UserController.java
+/workspace/backend/auth-service/src/main/java/mil/army/cop/auth/dto/UserDto.java
+/workspace/backend/auth-service/src/main/java/mil/army/cop/auth/entity/User.java
+/workspace/backend/auth-service/src/main/java/mil/army/cop/auth/repository/UserRepository.java
+/workspace/backend/auth-service/src/main/java/mil/army/cop/auth/service/UserService.java

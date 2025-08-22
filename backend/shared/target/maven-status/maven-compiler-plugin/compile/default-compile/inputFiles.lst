@@ -1,0 +1,10 @@
+/workspace/backend/shared/src/main/java/mil/army/cop/shared/config/CorsConfig.java
+/workspace/backend/shared/src/main/java/mil/army/cop/shared/config/OpenApiConfig.java
+/workspace/backend/shared/src/main/java/mil/army/cop/shared/config/RestTemplateConfig.java
+/workspace/backend/shared/src/main/java/mil/army/cop/shared/dto/BaseDto.java
+/workspace/backend/shared/src/main/java/mil/army/cop/shared/dto/GeoJsonDto.java
+/workspace/backend/shared/src/main/java/mil/army/cop/shared/exception/CopException.java
+/workspace/backend/shared/src/main/java/mil/army/cop/shared/integration/ServiceClient.java
+/workspace/backend/shared/src/main/java/mil/army/cop/shared/security/CopRole.java
+/workspace/backend/shared/src/main/java/mil/army/cop/shared/security/SecurityConfig.java
+/workspace/backend/shared/src/main/java/mil/army/cop/shared/security/WebSocketSecurityConfig.java
