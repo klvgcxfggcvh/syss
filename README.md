@@ -466,47 +466,8 @@ curl -H "Authorization: Bearer $JWT_TOKEN" http://localhost:8080/api/ops
 export DEBUG=army-cop:*
 
 # Frontend debug logs
-console.log("[v0] Debug message", data)
+console.debug("[cop] Debug message", data)
 
 # Backend debug logs
 logging.level.mil.army.cop=DEBUG
-\`\`\`
-
-## 📈 Roadmap
-
-### Phase 1 (Current)
-- ✅ Core map functionality with NATO symbology
-- ✅ Operations and task management
-- ✅ Real-time messaging and updates
-- ✅ Offline capabilities with sync
-
-### Phase 2 (Planned)
-- 🔄 Advanced analytics and reporting
-- 🔄 Mobile app (React Native)
-- 🔄 AI-powered threat detection
-- 🔄 Integration with external systems
-
-### Phase 3 (Future)
-- 📋 Drone and sensor integration
-- 📋 Predictive analytics
-- 📋 Advanced visualization (3D maps)
-- 📋 Multi-coalition support
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- **Leaflet**: Open-source mapping library
-- **Spring Boot**: Java application framework
-- **Keycloak**: Identity and access management
-- **PostGIS**: Spatial database extension
-- **shadcn/ui**: Beautiful UI components
-- **Zustand**: Lightweight state management
-
----
-
-**Built with ❤️ for military operations and situational awareness**
-
-For questions, issues, or contributions, please contact the development team or create an issue in the repository.
+\`
