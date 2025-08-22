@@ -106,6 +106,44 @@ npm run start    # Start production server (after build)
 - Zustand for state; IndexedDB-based offline storage and background sync
 - SSE and WebSocket clients for realtime (with simulated updates in dev)
 
+## What to learn to understand this system
+- Core web and TypeScript
+  - TypeScript fundamentals (types, generics, modules)
+  - Modern React (hooks, context, suspense)
+  - Next.js 15 App Router (server vs client components, routing, data fetching)
+- UI and styling
+  - Tailwind CSS
+  - shadcn/ui and Radix Primitives
+  - Forms with react-hook-form + zod validation
+- Mapping and charts
+  - Leaflet and leaflet-draw basics
+  - Recharts basics
+- State and data
+  - Zustand patterns (slices, selectors, derived state)
+  - IndexedDB basics and background sync concepts
+- Networking
+  - REST/JSON and fetch; CORS
+  - Server-Sent Events (SSE) and event streams
+  - WebSocket basics and reconnection handling
+- Authn/Authz (with backend)
+  - OAuth2/OpenID Connect
+  - Keycloak basics (realms, clients, roles)
+- Backend overview (optional)
+  - Spring Boot fundamentals (controllers, services, configuration)
+  - Postgres basics; schemas and migrations
+  - Redis/messaging patterns (pub/sub) if enabled
+  - API gateway and reverse proxy concepts
+- DevOps and runtime
+  - Docker and Docker Compose
+  - NGINX reverse proxying for /api and /ws
+  - Environment variables and configuration management
+- Project specifics
+  - Read `services/api-service.ts`, `services/realtime-service.ts`, `services/indexeddb-service.ts`, `services/sync-service.ts`
+  - Review stores in `store/` and routes in `app/`
+  - Skim `backend/` README for service responsibilities
+
+- Suggested path: frontend basics → data/state → realtime → backend/auth → containerization.
+
 ## Troubleshooting
 - API requests fail locally: set `NEXT_PUBLIC_API_BASE_URL=http://localhost:8080/api` and ensure your backend (or gateway) is up.
 - WebSocket not connecting: verify the gateway exposes `/ws` and that CORS/upgrade headers are correctly proxied by NGINX.
