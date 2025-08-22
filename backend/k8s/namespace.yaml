@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: army-cop
+  labels:
+    name: army-cop
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: army-cop-config
+  namespace: army-cop
+data:
+  POSTGRES_HOST: "postgres-service"
+  POSTGRES_PORT: "5432"
+  KEYCLOAK_URL: "http://keycloak-service:8080"
+  KEYCLOAK_REALM: "army-cop"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: army-cop-secrets
+  namespace: army-cop
+type: Opaque
+data:
+  POSTGRES_PASSWORD: cG9zdGdyZXM=  # base64 encoded 'postgres'
+  KEYCLOAK_CLIENT_SECRET: Y2xpZW50LXNlY3JldA==  # base64 encoded 'client-secret'

@@ -1,0 +1,154 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgis/postgis:15-3.3
+    container_name: army-cop-postgres
+    environment:
+      POSTGRES_DB: army_cop
+      POSTGRES_USER: cop_user
+      POSTGRES_PASSWORD: cop_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-scripts:/docker-entrypoint-initdb.d
+    networks:
+      - cop-network
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:23.0.1
+    container_name: army-cop-keycloak
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://postgres:5432/keycloak
+      KC_DB_USERNAME: cop_user
+      KC_DB_PASSWORD: cop_password
+      KC_HOSTNAME_STRICT: false
+      KC_HTTP_ENABLED: true
+      KC_IMPORT: /opt/keycloak/data/import/army-cop-realm.json
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    command: start-dev --import-realm
+    volumes:
+      - ./keycloak:/opt/keycloak/data/import
+    networks:
+      - cop-network
+
+  auth-service:
+    build: ./auth-service
+    container_name: army-cop-auth
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/army_cop
+      SPRING_DATASOURCE_USERNAME: cop_user
+      SPRING_DATASOURCE_PASSWORD: cop_password
+      KEYCLOAK_AUTH_SERVER_URL: http://keycloak:8080
+    ports:
+      - "8081:8080"
+    depends_on:
+      - postgres
+      - keycloak
+    networks:
+      - cop-network
+
+  ops-service:
+    build: ./ops-service
+    container_name: army-cop-ops
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/army_cop
+      SPRING_DATASOURCE_USERNAME: cop_user
+      SPRING_DATASOURCE_PASSWORD: cop_password
+    ports:
+      - "8082:8080"
+    depends_on:
+      - postgres
+    networks:
+      - cop-network
+
+  cop-service:
+    build: ./cop-service
+    container_name: army-cop-map
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/army_cop
+      SPRING_DATASOURCE_USERNAME: cop_user
+      SPRING_DATASOURCE_PASSWORD: cop_password
+    ports:
+      - "8083:8080"
+    depends_on:
+      - postgres
+    networks:
+      - cop-network
+
+  task-service:
+    build: ./task-service
+    container_name: army-cop-tasks
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/army_cop
+      SPRING_DATASOURCE_USERNAME: cop_user
+      SPRING_DATASOURCE_PASSWORD: cop_password
+    ports:
+      - "8084:8080"
+    depends_on:
+      - postgres
+    networks:
+      - cop-network
+
+  report-service:
+    build: ./report-service
+    container_name: army-cop-reports
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/army_cop
+      SPRING_DATASOURCE_USERNAME: cop_user
+      SPRING_DATASOURCE_PASSWORD: cop_password
+    ports:
+      - "8085:8080"
+    depends_on:
+      - postgres
+    networks:
+      - cop-network
+
+  message-service:
+    build: ./message-service
+    container_name: army-cop-messages
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/army_cop
+      SPRING_DATASOURCE_USERNAME: cop_user
+      SPRING_DATASOURCE_PASSWORD: cop_password
+    ports:
+      - "8086:8080"
+    depends_on:
+      - postgres
+    networks:
+      - cop-network
+
+  replay-service:
+    build: ./replay-service
+    container_name: army-cop-replay
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/army_cop
+      SPRING_DATASOURCE_USERNAME: cop_user
+      SPRING_DATASOURCE_PASSWORD: cop_password
+    ports:
+      - "8087:8080"
+    depends_on:
+      - postgres
+    networks:
+      - cop-network
+
+volumes:
+  postgres_data:
+
+networks:
+  cop-network:
+    driver: bridge

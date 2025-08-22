@@ -1,0 +1,18 @@
+FROM openjdk:17-jdk-slim
+
+WORKDIR /app
+
+# Copy Maven wrapper and pom files
+COPY .mvn/ .mvn/
+COPY mvnw pom.xml ./
+COPY shared/ shared/
+
+# Copy service-specific files (to be customized per service)
+COPY SERVICE_NAME/ SERVICE_NAME/
+
+# Build the application
+RUN ./mvnw clean package -DskipTests
+
+# Run the application
+EXPOSE 8080
+CMD ["java", "-jar", "SERVICE_NAME/target/SERVICE_NAME-1.0.0.jar"]

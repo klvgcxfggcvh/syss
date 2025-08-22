@@ -1,0 +1,57 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: army-cop-ingress
+  namespace: army-cop
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/cors-allow-origin: "*"
+    nginx.ingress.kubernetes.io/cors-allow-methods: "GET, POST, PUT, DELETE, OPTIONS"
+    nginx.ingress.kubernetes.io/cors-allow-headers: "DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization"
+spec:
+  rules:
+  - host: army-cop-api.local
+    http:
+      paths:
+      - path: /api/auth
+        pathType: Prefix
+        backend:
+          service:
+            name: auth-service
+            port:
+              number: 8081
+      - path: /api/operations
+        pathType: Prefix
+        backend:
+          service:
+            name: ops-service
+            port:
+              number: 8082
+      - path: /api/tasks
+        pathType: Prefix
+        backend:
+          service:
+            name: task-service
+            port:
+              number: 8084
+      - path: /api/reports
+        pathType: Prefix
+        backend:
+          service:
+            name: report-service
+            port:
+              number: 8085
+      - path: /api/messages
+        pathType: Prefix
+        backend:
+          service:
+            name: message-service
+            port:
+              number: 8086
+      - path: /api/replay
+        pathType: Prefix
+        backend:
+          service:
+            name: replay-service
+            port:
+              number: 8087
