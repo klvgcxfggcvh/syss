@@ -9,6 +9,13 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      config.resolve = config.resolve || {}
+      config.resolve.alias = { ...(config.resolve.alias || {}), leaflet: false, 'leaflet-draw': false }
+    }
+    return config
+  }
 }
 
 export default nextConfig
