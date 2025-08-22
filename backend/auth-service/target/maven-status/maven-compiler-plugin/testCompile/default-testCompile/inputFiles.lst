@@ -1,0 +1,3 @@
+/workspace/backend/auth-service/src/test/java/mil/army/cop/auth/AuthServiceApplicationTests.java
+/workspace/backend/auth-service/src/test/java/mil/army/cop/auth/controller/UserControllerTest.java
+/workspace/backend/auth-service/src/test/java/mil/army/cop/auth/integration/AuthServiceIntegrationTest.java

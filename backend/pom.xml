@@ -21,13 +21,13 @@
         <testcontainers.version>1.19.3</testcontainers.version>
         <keycloak.version>23.0.1</keycloak.version>
         <postgis.version>2023.1.0</postgis.version>
+        <hibernate.spatial.version>6.4.4.Final</hibernate.spatial.version>
     </properties>
 
     <modules>
         <module>shared</module>
         <module>auth-service</module>
         <module>ops-service</module>
-        <module>cop-service</module>
         <module>task-service</module>
         <module>report-service</module>
         <module>message-service</module>
@@ -66,6 +66,11 @@
                 <groupId>net.postgis</groupId>
                 <artifactId>postgis-jdbc</artifactId>
                 <version>${postgis.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-spatial</artifactId>
+                <version>${hibernate.spatial.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

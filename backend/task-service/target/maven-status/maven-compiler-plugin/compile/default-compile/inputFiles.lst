@@ -1,0 +1,4 @@
+/workspace/backend/task-service/src/main/java/mil/army/cop/task/TaskServiceApplication.java
+/workspace/backend/task-service/src/main/java/mil/army/cop/task/controller/TaskController.java
+/workspace/backend/task-service/src/main/java/mil/army/cop/task/entity/Task.java
+/workspace/backend/task-service/src/main/java/mil/army/cop/task/entity/TaskUpdate.java

@@ -1,0 +1,10 @@
+mil/army/cop/shared/config/OpenApiConfig.class
+mil/army/cop/shared/dto/BaseDto.class
+mil/army/cop/shared/config/RestTemplateConfig.class
+mil/army/cop/shared/integration/ServiceClient.class
+mil/army/cop/shared/security/WebSocketSecurityConfig.class
+mil/army/cop/shared/config/CorsConfig.class
+mil/army/cop/shared/exception/CopException.class
+mil/army/cop/shared/security/SecurityConfig.class
+mil/army/cop/shared/dto/GeoJsonDto.class
+mil/army/cop/shared/security/CopRole.class

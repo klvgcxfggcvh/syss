@@ -3,7 +3,7 @@
 echo "Starting Army COP Backend in Development Mode..."
 
 # Start infrastructure
-docker-compose up -d postgres keycloak
+docker compose up -d postgres keycloak
 
 # Wait for services to be ready
 echo "Waiting for PostgreSQL and Keycloak to start..."

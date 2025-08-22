@@ -1,0 +1,11 @@
+/workspace/backend/message-service/src/main/java/mil/army/cop/message/MessageServiceApplication.java
+/workspace/backend/message-service/src/main/java/mil/army/cop/message/config/MessageSecurityConfig.java
+/workspace/backend/message-service/src/main/java/mil/army/cop/message/config/WebSocketConfig.java
+/workspace/backend/message-service/src/main/java/mil/army/cop/message/dto/MessageDto.java
+/workspace/backend/message-service/src/main/java/mil/army/cop/message/dto/WebSocketMessageDto.java
+/workspace/backend/message-service/src/main/java/mil/army/cop/message/entity/Channel.java
+/workspace/backend/message-service/src/main/java/mil/army/cop/message/entity/Message.java
+/workspace/backend/message-service/src/main/java/mil/army/cop/message/handler/ChatWebSocketHandler.java
+/workspace/backend/message-service/src/main/java/mil/army/cop/message/repository/ChannelRepository.java
+/workspace/backend/message-service/src/main/java/mil/army/cop/message/repository/MessageRepository.java
+/workspace/backend/message-service/src/main/java/mil/army/cop/message/service/MessageStreamService.java
